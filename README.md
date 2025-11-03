@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Backend Prisma Neo Project
 
-## Getting Started
+Next.js проект с полной интеграцией Prisma ORM, TypeScript и современными инструментами разработки.
 
-First, run the development server:
+## 🚀 Технологии
+
+- **Next.js 16** - React фреймворк
+- **TypeScript** - типизированный JavaScript
+- **Prisma 6** - современная ORM для баз данных
+- **PostgreSQL** - реляционная база данных
+- **Prettier** - форматирование кода
+- **ESLint** - линтер кода
+- **Tailwind CSS** - CSS фреймворк
+
+## 📦 Установка
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Установка зависимостей
+yarn install
+
+# Генерация Prisma Client
+yarn db:generate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🗄️ База данных
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Команды Prisma:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Запуск локального сервера Prisma Postgres
+yarn db:dev
 
-## Learn More
+# Создание миграции
+yarn db:migrate
 
-To learn more about Next.js, take a look at the following resources:
+# Сброс базы данных
+yarn db:reset
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Заполнение тестовыми данными
+yarn db:seed
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Открытие Prisma Studio
+yarn db:studio
 
-## Deploy on Vercel
+# Синхронизация схемы с базой
+yarn db:push
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Модели данных:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **User** - пользователи системы
+- **Post** - посты пользователей
+
+## 🎯 API Endpoints
+
+### Пользователи:
+
+- `GET /api/users` - получить всех пользователей
+- `POST /api/users` - создать пользователя
+
+### Посты:
+
+- `GET /api/posts` - получить все посты
+- `POST /api/posts` - создать пост
+
+## 🔧 Разработка
+
+```bash
+# Запуск dev сервера
+yarn dev
+
+# Линтинг
+yarn lint
+yarn lint:fix
+
+# Форматирование
+yarn format
+yarn format:check
+
+# Проверка качества кода
+yarn code-quality
+yarn code-quality:fix
+```
+
+## 📁 Структура проекта
+
+```
+src/
+├── app/
+│   ├── api/          # API routes
+│   ├── globals.css   # Глобальные стили
+│   ├── layout.tsx    # Корневой layout
+│   └── page.tsx      # Главная страница
+├── lib/
+│   └── prisma.ts     # Prisma client
+└── generated/
+    └── prisma/       # Сгенерированный Prisma Client
+
+prisma/
+├── schema.prisma     # Схема базы данных
+├── seed.ts          # Тестовые данные
+└── migrations/      # Миграции
+
+.vscode/
+└── settings.json    # Настройки VSCode
+```
+
+## 🌐 Запуск
+
+1. Запустите локальную базу данных:
+
+   ```bash
+   yarn db:dev
+   ```
+
+2. Создайте миграцию:
+
+   ```bash
+   yarn db:migrate
+   ```
+
+3. Заполните тестовыми данными:
+
+   ```bash
+   yarn db:seed
+   ```
+
+4. Запустите приложение:
+   ```bash
+   yarn dev
+   ```
+
+Откройте [http://localhost:3000](http://localhost:3000) в браузере.
+
+## 📚 Полезные ссылки
+
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)

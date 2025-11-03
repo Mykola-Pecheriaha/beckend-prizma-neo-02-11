@@ -1,0 +1,19 @@
+# Ignore files with Russian content
+
+README.md
+
+# Node modules and dependencies
+
+node_modules/
+.next/
+build/
+dist/
+coverage/
+\*.log
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Generated files
+
+src/generated/
