@@ -58,6 +58,41 @@ model Patient {
   medications      String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  consultations Consultation[]
 
   @@map("patients")
+}
+
+model Consultation {
+  id          Int      @id @default(autoincrement())
+  patientName String
+  age         Int
+  gender      String
+  phone       String
+  height      Int      // в см
+  weight      Int      // в кг
+  bmi         Float    @default(0.0)
+  bmiStatus   String   @default("")
+  complaints  String?
+  // Обстеження
+  hasOglad    Boolean  @default(false)
+  hasAnalizi  Boolean  @default(false)
+  hasEkg      Boolean  @default(false)
+  hasRentgen  Boolean  @default(false)
+  hasUzi      Boolean  @default(false)
+  hasKt       Boolean  @default(false)
+  hasMrt      Boolean  @default(false)
+  // Медична історія
+  hasChronicDiseases Boolean @default(false)
+  takesMedications   Boolean @default(false)
+  painLevel         Int     @default(0)
+  hasAllergies      Boolean @default(false)
+  // Додаткові коментарі
+  additionalComments String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  patientId   Int?
+  patient     Patient? @relation(fields: [patientId], references: [id], onDelete: SetNull)
+
+  @@map("consultations")
 }
