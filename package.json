@@ -10,8 +10,8 @@
     "lint:fix": "eslint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "code-quality": "yarn lint && yarn format:check",
-    "code-quality:fix": "yarn lint:fix && yarn format",
+    "code-quality": "npm run lint && npm run format:check",
+    "code-quality:fix": "npm run lint:fix && npm run format",
     "db:dev": "prisma dev",
     "db:migrate": "prisma migrate dev",
     "db:reset": "prisma migrate reset",
@@ -40,6 +40,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
     "typescript": "^5"
   }

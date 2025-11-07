@@ -75,5 +75,6 @@
     "prettierignore": false,
     "prisma": true
   },
-  "cSpell.ignorePaths": ["README.md"]
+  "cSpell.ignorePaths": ["README.md"],
+  "npm.packageManager": "npm"
 }

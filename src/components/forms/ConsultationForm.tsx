@@ -123,6 +123,12 @@ export default function ConsultationForm() {
 
       if (response.ok) {
         setSubmitMessage('Консультація успішно додана!');
+
+        // Автоматически скрываем сообщение через 3 секунды
+        setTimeout(() => {
+          setSubmitMessage('');
+        }, 3000);
+
         // Очищення форми после успешной отправки
         setFormData({
           patientName: '',
@@ -204,7 +210,7 @@ export default function ConsultationForm() {
                 onChange={handleInputChange}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                placeholder="микола"
+                placeholder="Введіть ім'я"
               />
             </div>
 
@@ -226,7 +232,7 @@ export default function ConsultationForm() {
                 max="120"
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                placeholder="57"
+                placeholder="Введіть вік"
               />
             </div>
 
@@ -268,7 +274,7 @@ export default function ConsultationForm() {
                 onChange={handleInputChange}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                placeholder="+38050757541"
+                placeholder="+380 XX XXX XX XX"
               />
             </div>
 
@@ -290,7 +296,7 @@ export default function ConsultationForm() {
                 max="250"
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                placeholder="178"
+                placeholder="Введіть ріст в см"
               />
             </div>
 
@@ -312,7 +318,7 @@ export default function ConsultationForm() {
                 max="300"
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                placeholder="140"
+                placeholder="Введіть вагу в кг"
               />
             </div>
           </div>
@@ -367,7 +373,7 @@ export default function ConsultationForm() {
               onChange={handleInputChange}
               rows={6}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-vertical"
-              placeholder="Опишіть скарги"
+              placeholder="Опишіть скарги пацієнта..."
             />
           </div>
         </div>
@@ -633,7 +639,7 @@ export default function ConsultationForm() {
               onChange={handleInputChange}
               rows={4}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical"
-              placeholder="Додаткові замітки"
+              placeholder="Додаткові коментарі або рекомендації..."
             />
           </div>
         </div>
