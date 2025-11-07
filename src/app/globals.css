@@ -68,8 +68,12 @@ body {
   input[type='text'],
   select,
   textarea {
+    background-color: #111827 !important;
+    border-color: #4b5563 !important;
     -webkit-text-fill-color: #ffffff !important;
     color: #ffffff !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
   }
 
   input[type='number']::-webkit-input-placeholder,
@@ -80,10 +84,47 @@ body {
     color: #9ca3af !important;
   }
 
+  /* Примусовий темний фон для всіх елементів форми */
+  input,
+  select,
+  textarea {
+    background-color: #111827 !important;
+    border-color: #4b5563 !important;
+    color: #ffffff !important;
+  }
+
   /* Виправлення для Safari на iOS */
   input[type='number']::-webkit-outer-spin-button,
   input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+
+  /* Додаткове форсування стилів для мобільних браузерів */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    background-color: #111827 !important;
+    border-color: #8b5cf6 !important;
+    color: #ffffff !important;
+  }
+
+  /* Спеціальні стилі для мобільних Safari та Chrome */
+  input[type='number'],
+  input[type='tel'],
+  input[type='text'] {
+    background-color: #111827 !important;
+    -webkit-background-color: #111827 !important;
+    -moz-background-color: #111827 !important;
+    background: #111827 !important;
+  }
+
+  /* Примусове застосування темного фону для всіх станів */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #111827 inset !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 }
