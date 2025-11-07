@@ -1,7 +1,6 @@
-import { PrismaClient } from '../src/generated/prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-
 async function seedDatabase() {
   console.log('Начало добавления тестовых данных...');
 
