@@ -60,3 +60,30 @@ body {
   border: 2px solid #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Покращена видимість для темної теми на мобільних пристроях */
+@media (prefers-color-scheme: dark) {
+  input[type='number'],
+  input[type='tel'],
+  input[type='text'],
+  select,
+  textarea {
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  input[type='number']::-webkit-input-placeholder,
+  input[type='tel']::-webkit-input-placeholder,
+  input[type='text']::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    -webkit-text-fill-color: #9ca3af !important;
+    color: #9ca3af !important;
+  }
+
+  /* Виправлення для Safari на iOS */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
