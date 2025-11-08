@@ -12,8 +12,16 @@ export async function GET() {
     return NextResponse.json(patients);
   } catch (error) {
     console.error('Error fetching patients:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace',
+      type: typeof error,
+    });
     return NextResponse.json(
-      { error: 'Failed to fetch patients' },
+      {
+        error: 'Failed to fetch patients',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }

@@ -16,8 +16,16 @@ export async function GET() {
     return NextResponse.json(consultations);
   } catch (error) {
     console.error('Ошибка при получении консультаций:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace',
+      type: typeof error,
+    });
     return NextResponse.json(
-      { error: 'Произошла ошибка при получении консультаций' },
+      {
+        error: 'Произошла ошибка при получении консультаций',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }
@@ -79,8 +87,16 @@ export async function POST(request: Request) {
     return NextResponse.json(consultation, { status: 201 });
   } catch (error) {
     console.error('Ошибка при создании консультации:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace',
+      type: typeof error,
+    });
     return NextResponse.json(
-      { error: 'Произошла ошибка при создании консультации' },
+      {
+        error: 'Произошла ошибка при создании консультации',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }
