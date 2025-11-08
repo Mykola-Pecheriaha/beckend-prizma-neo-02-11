@@ -61,70 +61,126 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Покращена видимість для темної теми на мобільних пристроях */
+/* Глобальні CSS змінні для темної теми */
+:root {
+  --input-bg-light: #ffffff;
+  --input-text-light: #111827;
+  --input-border-light: #d1d5db;
+}
+
 @media (prefers-color-scheme: dark) {
-  input[type='number'],
-  input[type='tel'],
-  input[type='text'],
-  select,
-  textarea {
-    background-color: #111827 !important;
-    border-color: #4b5563 !important;
-    -webkit-text-fill-color: #ffffff !important;
-    color: #ffffff !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
+  :root {
+    /* ІНВЕРТОВАНИЙ підхід: білий фон + чорний текст для кращої видимості на мобільних */
+    --input-bg-dark: #ffffff;
+    --input-text-dark: #111827;
+    --input-border-dark: #d1d5db;
   }
+}
 
-  input[type='number']::-webkit-input-placeholder,
-  input[type='tel']::-webkit-input-placeholder,
-  input[type='text']::-webkit-input-placeholder,
-  textarea::-webkit-input-placeholder {
-    -webkit-text-fill-color: #9ca3af !important;
-    color: #9ca3af !important;
-  }
-
-  /* Примусовий темний фон для всіх елементів форми */
+/* Максимально агресивні стилі для темної теми - ІНВЕРТОВАНИЙ підхід */
+@media (prefers-color-scheme: dark) {
+  /* Базові стилі для всіх полів вводу - БІЛИЙ ФОН + ЧОРНИЙ ТЕКСТ */
   input,
   select,
-  textarea {
-    background-color: #111827 !important;
-    border-color: #4b5563 !important;
-    color: #ffffff !important;
+  textarea,
+  input[type='text'],
+  input[type='number'],
+  input[type='tel'],
+  input[type='email'],
+  input[type='password'] {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    border-color: #d1d5db !important;
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+
+    /* Спеціально для мобільних браузерів */
+    -webkit-background-color: #ffffff !important;
+    -moz-background-color: #ffffff !important;
+    -ms-background-color: #ffffff !important;
+    -o-background-color: #ffffff !important;
   }
 
-  /* Виправлення для Safari на iOS */
-  input[type='number']::-webkit-outer-spin-button,
-  input[type='number']::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  /* Стилі для placeholder тексту - СІРИЙ НА БІЛОМУ ФОНІ */
+  input::placeholder,
+  textarea::placeholder,
+  input::-webkit-input-placeholder,
+  input::-moz-placeholder,
+  input:-ms-input-placeholder,
+  input:-moz-placeholder,
+  textarea::-webkit-input-placeholder,
+  textarea::-moz-placeholder,
+  textarea:-ms-input-placeholder,
+  textarea:-moz-placeholder {
+    color: #6b7280 !important;
+    -webkit-text-fill-color: #6b7280 !important;
+    opacity: 1 !important;
   }
 
-  /* Додаткове форсування стилів для мобільних браузерів */
+  /* Стилі для фокусу - БІЛИЙ ФОН + ЧОРНИЙ ТЕКСТ */
   input:focus,
   select:focus,
   textarea:focus {
-    background-color: #111827 !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
     border-color: #8b5cf6 !important;
-    color: #ffffff !important;
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5) !important;
   }
 
-  /* Спеціальні стилі для мобільних Safari та Chrome */
-  input[type='number'],
-  input[type='tel'],
-  input[type='text'] {
-    background-color: #111827 !important;
-    -webkit-background-color: #111827 !important;
-    -moz-background-color: #111827 !important;
-    background: #111827 !important;
-  }
-
-  /* Примусове застосування темного фону для всіх станів */
+  /* Виправлення автозаповнення в Safari/Chrome - БІЛИЙ ФОН + ЧОРНИЙ ТЕКСТ */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #111827 inset !important;
-    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0 50px #ffffff inset !important;
+    -webkit-text-fill-color: #111827 !important;
+    caret-color: #111827 !important;
+    border-color: #d1d5db !important;
+  }
+
+  /* Спеціально для Safari на iOS */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+  }
+
+  /* Виправлення для Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+  }
+
+  /* Додаткові стилі для мобільних пристроїв - БІЛИЙ ФОН + ЧОРНИЙ ТЕКСТ */
+  @media (max-width: 768px) {
+    input,
+    select,
+    textarea {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      color: #111827 !important;
+      -webkit-text-fill-color: #111827 !important;
+      border: 2px solid #d1d5db !important;
+      font-size: 16px !important; /* Запobiгає zoom на iOS */
+    }
+  }
+
+  /* Спеціальні стилі для select елементів - ЧОРНА СТРІЛКА НА БІЛОМУ ФОНІ */
+  select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path fill='%23111827' d='M6 9L1.5 4.5h9z'/></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 8px center !important;
+    padding-right: 30px !important;
+  }
+
+  /* Стилі для option елементів - БІЛИЙ ФОН + ЧОРНИЙ ТЕКСТ */
+  select option {
+    background-color: #ffffff !important;
+    color: #111827 !important;
   }
 }
